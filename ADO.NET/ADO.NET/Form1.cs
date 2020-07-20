@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace ADO.NET
 {
@@ -16,10 +17,22 @@ namespace ADO.NET
         
         SqlConnection connection = new SqlConnection();
 
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=True";
+        // string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=True";
+        static string GetConnectionStringByName(string name)
+        {
+            string returnValue = null; ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings[name];
+            if (settings != null)
+                returnValue = settings.ConnectionString;
+            return returnValue;
+        }
+        string connectionString = GetConnectionStringByName("DBConnect.NorthwindConnectionString");
+
         public Form1()
         {
             InitializeComponent();
+            
+
+
             this.connection.StateChange += new StateChangeEventHandler(this.connection_StateChange);
 
         }
@@ -97,6 +110,18 @@ namespace ADO.NET
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void connectionListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConnectionStringSettingsCollection settings = ConfigurationManager.ConnectionStrings;
+            if (settings != null)
+            {
+                foreach (ConnectionStringSettings cs in settings)
+                {
+                    string str = String.Format("Name = {0}\nProviderName = {1}\nConnectionString = {2}", cs.Name, cs.ProviderName, cs.ConnectionString); MessageBox.Show(str, "Параметры подключений");
+                }
+            }
         }
     }
 }
