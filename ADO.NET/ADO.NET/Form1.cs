@@ -185,6 +185,37 @@ namespace ADO.NET
                 }
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open(); 
+                try
+                {
+                    SqlTransaction sqlTran = connection.BeginTransaction();
+                    SqlCommand command = connection.CreateCommand();
+                    command.Transaction = sqlTran;
+                    command.CommandText = "INSERT INTO Products (ProductName, UnitPrice, QuantityPerUnit) VALUES('Wrong size', 12, '1 boxes')"; command.ExecuteNonQuery();
+                    command.CommandText = "INSERT INTO Products (ProductName, UnitPrice, QuantityPerUnit) VALUES('Wrong color', 25, '100 ml')"; command.ExecuteNonQuery();
+                    sqlTran.Commit();
+                    MessageBox.Show("Строки записаны в базу данных");
+                }
+                catch (SqlException ex) 
+                {
+                    try
+                    {
+                        SqlTransaction sqlTran = connection.BeginTransaction();
+                        sqlTran.Rollback();
+                    }
+                    catch (Exception exRollback)
+                    {
+                        MessageBox.Show(exRollback.Message);
+                    }
+                    MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                }
+            }
+        }
     }
 }
 
