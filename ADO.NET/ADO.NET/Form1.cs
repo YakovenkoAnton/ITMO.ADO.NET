@@ -14,7 +14,7 @@ namespace ADO.NET
 {
     public partial class Form1 : Form
     {
-        
+
         SqlConnection connection = new SqlConnection();
 
         // string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=True";
@@ -30,7 +30,7 @@ namespace ADO.NET
         public Form1()
         {
             InitializeComponent();
-            
+
 
 
             this.connection.StateChange += new StateChangeEventHandler(this.connection_StateChange);
@@ -42,7 +42,7 @@ namespace ADO.NET
             connectToolStripMenuItem.Enabled = (e.CurrentState == ConnectionState.Closed);
             asyncConnectToolStripMenuItem.Enabled = (e.CurrentState == ConnectionState.Closed);
             closeToolStripMenuItem.Enabled = (e.CurrentState == ConnectionState.Open);
-            
+
         }
 
 
@@ -123,5 +123,69 @@ namespace ADO.NET
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (connection)
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    MessageBox.Show("Сначала подключитесь к базе");
+                    return;
+                }
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = "SELECT COUNT(*) FROM Products";
+                try
+                {
+                    int number = (int)command.ExecuteScalar();
+                    label1.Text = number.ToString();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int number = WorkWithDataBase.ExecuteScalarMetod(connectionString, "SELECT COUNT(*) FROM Products");
+                label2.Text = number.ToString();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlCommand command = new SqlCommand("SELECT ProductName, UnitPrice, QuantityPerUnit FROM Products", connection);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ListViewItem newItem = listView1.Items.Add(reader["ProductName"].ToString());
+                        //newItem.SubItems.Add(reader["UnitPrice"].ToString());
+                        newItem.SubItems.Add(reader.GetDecimal(1).ToString());
+                        newItem.SubItems.Add(reader["QuantityPerUnit"].ToString());
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }
+
+
