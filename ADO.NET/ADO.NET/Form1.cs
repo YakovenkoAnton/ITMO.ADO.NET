@@ -13,15 +13,26 @@ namespace ADO.NET
 {
     public partial class Form1 : Form
     {
+        
         SqlConnection connection = new SqlConnection();
+
         string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=True";
         public Form1()
         {
-
             InitializeComponent();
-
+            this.connection.StateChange += new StateChangeEventHandler(this.connection_StateChange);
 
         }
+
+        private void connection_StateChange(object sender, StateChangeEventArgs e)
+        {
+            connectToolStripMenuItem.Enabled = (e.CurrentState == ConnectionState.Closed);
+            asyncConnectToolStripMenuItem.Enabled = (e.CurrentState == ConnectionState.Closed);
+            closeToolStripMenuItem.Enabled = (e.CurrentState == ConnectionState.Open);
+            
+        }
+
+
 
         private void menuStrip1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -39,10 +50,20 @@ namespace ADO.NET
                 }
                 else MessageBox.Show("Соединение с базой данных уже установлено");
             }
-            catch
+            catch (Exception Xcp)
             {
-                MessageBox.Show("Ошибка соединения с базой данных");
+                MessageBox.Show(Xcp.Message, "Unexpected Exception",
+              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //catch (SqlException XcpSQL)
+            //{
+            //    foreach (SqlError se in XcpSQL.Errors)
+            //    {
+            //        MessageBox.Show(se.Message, "Источник ошибки: " + se.Source,
+            //      MessageBoxButtons.OK,
+            //      MessageBoxIcon.Error);
+            //    }
+            //}
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,6 +92,11 @@ namespace ADO.NET
             {
                 MessageBox.Show("Ошибка соединения с базой данных");
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
