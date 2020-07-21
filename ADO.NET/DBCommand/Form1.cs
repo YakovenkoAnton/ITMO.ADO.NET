@@ -102,5 +102,50 @@ namespace DBCommand
                 catch (SqlException ex) { MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (sqlConnection1) 
+            {
+                sqlCommand3.CommandText = "CREATE TABLE SalesPersons (" + "[SalesPersonID] [int] IDENTITY(1,1) NOT NULL, " + "[FirstName] [nvarchar](50) NULL, " + "[LastName] [nvarchar](50) NULL)";
+                try 
+                {
+                    sqlConnection1.Open(); 
+                    sqlCommand3.ExecuteNonQuery(); 
+                    MessageBox.Show("Таблица SalesPersons создана"); 
+                } 
+                catch (SqlException ex) 
+                {
+                    MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            StringBuilder results = new StringBuilder(); 
+            try
+            {
+                sqlCommand4.Parameters["@City"].Value = CityTextBox.Text;
+                sqlConnection1.Open(); SqlDataReader reader = sqlCommand4.ExecuteReader();
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++) 
+                    {
+                        results.Append(reader[i].ToString() + "\t"); 
+                    }
+                    results.Append(Environment.NewLine);
+                }
+                ResultsTextBox.Text = results.ToString();
+            }
+            catch (SqlException ex) 
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            }
+            finally 
+            {
+                sqlConnection1.Close(); 
+            }
+        }
     }
 }

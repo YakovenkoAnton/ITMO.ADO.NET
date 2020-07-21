@@ -35,6 +35,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.sqlCommand2 = new System.Data.SqlClient.SqlCommand();
+            this.button4 = new System.Windows.Forms.Button();
+            this.sqlCommand3 = new System.Data.SqlClient.SqlCommand();
+            this.CityTextBox = new System.Windows.Forms.TextBox();
+            this.sqlCommand4 = new System.Data.SqlClient.SqlCommand();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // sqlConnection1
@@ -93,11 +98,54 @@
             this.sqlCommand2.CommandType = System.Data.CommandType.StoredProcedure;
             this.sqlCommand2.Connection = this.sqlConnection1;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(181, 481);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(145, 23);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "Создание таблицы";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // sqlCommand3
+            // 
+            this.sqlCommand3.Connection = this.sqlConnection1;
+            // 
+            // CityTextBox
+            // 
+            this.CityTextBox.Location = new System.Drawing.Point(463, 41);
+            this.CityTextBox.Name = "CityTextBox";
+            this.CityTextBox.Size = new System.Drawing.Size(100, 20);
+            this.CityTextBox.TabIndex = 5;
+            this.CityTextBox.Text = "London";
+            // 
+            // sqlCommand4
+            // 
+            this.sqlCommand4.CommandText = "SELECT        CustomerID, CompanyName\r\nFROM            Customers\r\nWHERE        (C" +
+    "ity = @City)";
+            this.sqlCommand4.Connection = this.sqlConnection1;
+            this.sqlCommand4.Parameters.AddRange(new System.Data.SqlClient.SqlParameter[] {
+            new System.Data.SqlClient.SqlParameter("@City", System.Data.SqlDbType.NVarChar, 15, "City")});
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(605, 37);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(152, 23);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "Запрос с параметром";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 516);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.CityTextBox);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.ResultsTextBox);
@@ -118,6 +166,11 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Data.SqlClient.SqlCommand sqlCommand2;
+        private System.Windows.Forms.Button button4;
+        private System.Data.SqlClient.SqlCommand sqlCommand3;
+        private System.Windows.Forms.TextBox CityTextBox;
+        private System.Data.SqlClient.SqlCommand sqlCommand4;
+        private System.Windows.Forms.Button button5;
     }
 }
 
