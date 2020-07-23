@@ -60,5 +60,25 @@ namespace CourseManager
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                schoolContext.SaveChanges();
+                MessageBox.Show("Changes saved to the database.");
+                this.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void closeForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            schoolContext.Dispose();
+        }
     }
 }
