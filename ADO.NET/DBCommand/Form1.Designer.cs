@@ -40,6 +40,10 @@
             this.CityTextBox = new System.Windows.Forms.TextBox();
             this.sqlCommand4 = new System.Data.SqlClient.SqlCommand();
             this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.CategoryNameTextBox = new System.Windows.Forms.TextBox();
+            this.OrdYearTextBox = new System.Windows.Forms.TextBox();
+            this.sqlCommand5 = new System.Data.SqlClient.SqlCommand();
             this.SuspendLayout();
             // 
             // sqlConnection1
@@ -138,11 +142,47 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(605, 89);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(152, 23);
+            this.button6.TabIndex = 7;
+            this.button6.Text = "Процедура с параметром";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // CategoryNameTextBox
+            // 
+            this.CategoryNameTextBox.Location = new System.Drawing.Point(463, 91);
+            this.CategoryNameTextBox.Name = "CategoryNameTextBox";
+            this.CategoryNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.CategoryNameTextBox.TabIndex = 8;
+            this.CategoryNameTextBox.Text = "Beverages";
+            // 
+            // OrdYearTextBox
+            // 
+            this.OrdYearTextBox.Location = new System.Drawing.Point(463, 128);
+            this.OrdYearTextBox.Name = "OrdYearTextBox";
+            this.OrdYearTextBox.Size = new System.Drawing.Size(100, 20);
+            this.OrdYearTextBox.TabIndex = 9;
+            this.OrdYearTextBox.Text = "1997";
+            // 
+            // sqlCommand5
+            // 
+            this.sqlCommand5.CommandText = "SalesByCategory";
+            this.sqlCommand5.CommandType = System.Data.CommandType.StoredProcedure;
+            this.sqlCommand5.Connection = this.sqlConnection1;
+            this.sqlCommand5.Parameters.AddRange(new System.Data.SqlClient.SqlParameter[] {
+            new System.Data.SqlClient.SqlParameter("Parameter1", System.Data.SqlDbType.NVarChar)});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 516);
+            this.Controls.Add(this.OrdYearTextBox);
+            this.Controls.Add(this.CategoryNameTextBox);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.CityTextBox);
             this.Controls.Add(this.button4);
@@ -171,6 +211,10 @@
         private System.Windows.Forms.TextBox CityTextBox;
         private System.Data.SqlClient.SqlCommand sqlCommand4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox CategoryNameTextBox;
+        private System.Windows.Forms.TextBox OrdYearTextBox;
+        private System.Data.SqlClient.SqlCommand sqlCommand5;
     }
 }
 
