@@ -33,6 +33,7 @@
             this.closeForm = new System.Windows.Forms.Button();
             this.courseGridView = new System.Windows.Forms.DataGridView();
             this.saveChanges = new System.Windows.Forms.Button();
+            this.viewOffices = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.courseGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             // 
             // closeForm
             // 
-            this.closeForm.Location = new System.Drawing.Point(381, 36);
+            this.closeForm.Location = new System.Drawing.Point(257, 36);
             this.closeForm.Name = "closeForm";
             this.closeForm.Size = new System.Drawing.Size(75, 23);
             this.closeForm.TabIndex = 1;
@@ -58,14 +59,14 @@
             // courseGridView
             // 
             this.courseGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.courseGridView.Location = new System.Drawing.Point(22, 109);
+            this.courseGridView.Location = new System.Drawing.Point(22, 170);
             this.courseGridView.Name = "courseGridView";
             this.courseGridView.Size = new System.Drawing.Size(310, 233);
             this.courseGridView.TabIndex = 2;
             // 
             // saveChanges
             // 
-            this.saveChanges.Location = new System.Drawing.Point(381, 75);
+            this.saveChanges.Location = new System.Drawing.Point(257, 81);
             this.saveChanges.Name = "saveChanges";
             this.saveChanges.Size = new System.Drawing.Size(75, 23);
             this.saveChanges.TabIndex = 3;
@@ -73,11 +74,22 @@
             this.saveChanges.UseVisualStyleBackColor = true;
             this.saveChanges.Click += new System.EventHandler(this.button1_Click);
             // 
+            // viewOffices
+            // 
+            this.viewOffices.Location = new System.Drawing.Point(257, 124);
+            this.viewOffices.Name = "viewOffices";
+            this.viewOffices.Size = new System.Drawing.Size(75, 23);
+            this.viewOffices.TabIndex = 4;
+            this.viewOffices.Text = "View Offices";
+            this.viewOffices.UseVisualStyleBackColor = true;
+            this.viewOffices.Click += new System.EventHandler(this.viewOffices_Click);
+            // 
             // CourseViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(423, 440);
+            this.Controls.Add(this.viewOffices);
             this.Controls.Add(this.saveChanges);
             this.Controls.Add(this.courseGridView);
             this.Controls.Add(this.closeForm);
@@ -96,6 +108,7 @@
         private System.Windows.Forms.Button closeForm;
         private System.Windows.Forms.DataGridView courseGridView;
         private System.Windows.Forms.Button saveChanges;
+        private System.Windows.Forms.Button viewOffices;
     }
 }
 
