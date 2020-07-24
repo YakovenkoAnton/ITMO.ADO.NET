@@ -1,7 +1,11 @@
-﻿namespace CourseManager
+﻿
+
+namespace CourseManager
 {
     partial class OfficeAssignment
     {
+        
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -40,12 +44,12 @@
             this.officeGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.officeGridView.Location = new System.Drawing.Point(37, 40);
             this.officeGridView.Name = "officeGridView";
-            this.officeGridView.Size = new System.Drawing.Size(292, 302);
+            this.officeGridView.Size = new System.Drawing.Size(376, 306);
             this.officeGridView.TabIndex = 0;
             // 
             // saveChanges
             // 
-            this.saveChanges.Location = new System.Drawing.Point(254, 373);
+            this.saveChanges.Location = new System.Drawing.Point(338, 378);
             this.saveChanges.Name = "saveChanges";
             this.saveChanges.Size = new System.Drawing.Size(75, 23);
             this.saveChanges.TabIndex = 1;
@@ -62,6 +66,7 @@
             this.Controls.Add(this.officeGridView);
             this.Name = "OfficeAssignment";
             this.Text = "OfficeAssignment";
+            this.Load += new System.EventHandler(this.OfficeAssignment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.officeGridView)).EndInit();
             this.ResumeLayout(false);
 
