@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerManager", "Customer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirst", "CodeFirst\CodeFirst.csproj", "{179CF861-CB38-4C91-9230-A5E7BC3A80A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatasetDesigner", "DatasetDesigner\DatasetDesigner.csproj", "{5EA385F2-E07A-4394-8EB0-375180CF379D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{179CF861-CB38-4C91-9230-A5E7BC3A80A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{179CF861-CB38-4C91-9230-A5E7BC3A80A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{179CF861-CB38-4C91-9230-A5E7BC3A80A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EA385F2-E07A-4394-8EB0-375180CF379D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EA385F2-E07A-4394-8EB0-375180CF379D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EA385F2-E07A-4394-8EB0-375180CF379D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EA385F2-E07A-4394-8EB0-375180CF379D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
