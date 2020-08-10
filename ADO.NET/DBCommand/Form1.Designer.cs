@@ -150,6 +150,7 @@
             this.button6.TabIndex = 7;
             this.button6.Text = "Процедура с параметром";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // CategoryNameTextBox
             // 
@@ -173,7 +174,9 @@
             this.sqlCommand5.CommandType = System.Data.CommandType.StoredProcedure;
             this.sqlCommand5.Connection = this.sqlConnection1;
             this.sqlCommand5.Parameters.AddRange(new System.Data.SqlClient.SqlParameter[] {
-            new System.Data.SqlClient.SqlParameter("Parameter1", System.Data.SqlDbType.NVarChar)});
+            new System.Data.SqlClient.SqlParameter("@RETURN_VALUE", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.ReturnValue, false, ((byte)(0)), ((byte)(0)), "", System.Data.DataRowVersion.Current, null),
+            new System.Data.SqlClient.SqlParameter("@CategoryName", System.Data.SqlDbType.NVarChar, 15),
+            new System.Data.SqlClient.SqlParameter("@OrdYear", System.Data.SqlDbType.NVarChar, 4)});
             // 
             // Form1
             // 

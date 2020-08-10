@@ -147,5 +147,35 @@ namespace DBCommand
                 sqlConnection1.Close(); 
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            StringBuilder results = new StringBuilder();
+            try
+            {
+                sqlCommand5.Parameters["@CategoryName"].Value = CategoryNameTextBox.Text;
+                sqlCommand5.Parameters["@OrdYear"].Value = OrdYearTextBox.Text;
+                sqlConnection1.Open();
+                SqlDataReader reader = sqlCommand5.ExecuteReader();
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        results.Append(reader[i].ToString() + "\t");
+                    }
+                    results.Append(Environment.NewLine);
+                }
+                ResultsTextBox.Text = results.ToString();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            finally
+            {
+                sqlConnection1.Close();
+            }
+        }
     }
 }
