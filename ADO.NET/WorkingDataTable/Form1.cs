@@ -13,6 +13,36 @@ namespace WorkingDataTable
 {
     public partial class Form1 : Form
     {
+        private void UpdateRowVersionDisplay()
+        {
+            try
+            {
+                CurrentDRVTextBox.Text = GetSelectedRow()[CustomersDataGridView.CurrentCell.OwningColumn.Name, 
+                    DataRowVersion.Current].ToString();
+            }
+            catch (Exception ex)
+            {
+                CurrentDRVTextBox.Text = ex.Message;
+            }
+           
+            try
+            {
+                OriginalDRVTextBox.Text = GetSelectedRow()[CustomersDataGridView.CurrentCell.OwningColumn.Name, 
+                    DataRowVersion.Original].ToString();
+            }
+            catch (Exception ex)
+            {
+                OriginalDRVTextBox.Text = ex.Message;
+            }
+
+            RowStateTextBox.Text = GetSelectedRow().RowState.ToString();
+
+
+
+        }
+
+
+
         private NorthwindDataSet.CustomersRow GetSelectedRow()
         {
             String SelectedCustomerID = CustomersDataGridView.CurrentRow.Cells["CustomerID"].Value.ToString();
@@ -72,6 +102,40 @@ namespace WorkingDataTable
         private void button1_Click(object sender, EventArgs e)
         {
             GetSelectedRow().Delete();
+        }
+
+        private void UpdateValueButton_Click(object sender, EventArgs e)
+        {
+            GetSelectedRow()[CustomersDataGridView.CurrentCell.OwningColumn.Name] = CellValueTextBox.Text;
+            UpdateRowVersionDisplay();
+        }
+
+        private void CustomersDataGridView_Click(object sender, EventArgs e)
+        {
+        CellValueTextBox.Text = CustomersDataGridView.CurrentCell.Value.ToString();
+        UpdateRowVersionDisplay();
+        }
+
+        private void AcceptChangesButton_Click(object sender, EventArgs e)
+        {
+            GetSelectedRow().AcceptChanges();
+            UpdateRowVersionDisplay();
+        }
+
+        private void RejectChangesButton_Click(object sender, EventArgs e)
+        {
+            GetSelectedRow().RejectChanges();
+            UpdateRowVersionDisplay();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

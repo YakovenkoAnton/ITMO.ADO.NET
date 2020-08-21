@@ -32,14 +32,25 @@
             this.CustomersDataGridView = new System.Windows.Forms.DataGridView();
             this.FillTableButton = new System.Windows.Forms.Button();
             this.sqlSelectCommand1 = new System.Data.SqlClient.SqlCommand();
+            this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
             this.sqlInsertCommand1 = new System.Data.SqlClient.SqlCommand();
             this.sqlUpdateCommand1 = new System.Data.SqlClient.SqlCommand();
             this.sqlDeleteCommand1 = new System.Data.SqlClient.SqlCommand();
             this.sqlDataAdapter1 = new System.Data.SqlClient.SqlDataAdapter();
-            this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
             this.northwindDataSet1 = new WorkingDataTable.NorthwindDataSet();
             this.AddRowButton = new System.Windows.Forms.Button();
             this.DeleteRowButton = new System.Windows.Forms.Button();
+            this.UpdateValueButton = new System.Windows.Forms.Button();
+            this.AcceptChangesButton = new System.Windows.Forms.Button();
+            this.RejectChangesButton = new System.Windows.Forms.Button();
+            this.CellValueTextBox = new System.Windows.Forms.TextBox();
+            this.OriginalDRVTextBox = new System.Windows.Forms.TextBox();
+            this.CurrentDRVTextBox = new System.Windows.Forms.TextBox();
+            this.RowStateTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CustomersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.northwindDataSet1)).BeginInit();
             this.SuspendLayout();
@@ -51,10 +62,11 @@
             this.CustomersDataGridView.Name = "CustomersDataGridView";
             this.CustomersDataGridView.Size = new System.Drawing.Size(759, 294);
             this.CustomersDataGridView.TabIndex = 0;
+            this.CustomersDataGridView.Click += new System.EventHandler(this.CustomersDataGridView_Click);
             // 
             // FillTableButton
             // 
-            this.FillTableButton.Location = new System.Drawing.Point(578, 353);
+            this.FillTableButton.Location = new System.Drawing.Point(12, 316);
             this.FillTableButton.Name = "FillTableButton";
             this.FillTableButton.Size = new System.Drawing.Size(75, 23);
             this.FillTableButton.TabIndex = 1;
@@ -66,6 +78,12 @@
             // 
             this.sqlSelectCommand1.CommandText = "SELECT * FROM Customers";
             this.sqlSelectCommand1.Connection = this.sqlConnection1;
+            // 
+            // sqlConnection1
+            // 
+            this.sqlConnection1.ConnectionString = "Data Source=(localDB)\\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=" +
+    "True";
+            this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
             // 
             // sqlInsertCommand1
             // 
@@ -168,12 +186,6 @@
             this.sqlDataAdapter1.UpdateCommand = this.sqlUpdateCommand1;
             this.sqlDataAdapter1.RowUpdated += new System.Data.SqlClient.SqlRowUpdatedEventHandler(this.sqlDataAdapter1_RowUpdated);
             // 
-            // sqlConnection1
-            // 
-            this.sqlConnection1.ConnectionString = "Data Source=(localDB)\\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=" +
-    "True";
-            this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
-            // 
             // northwindDataSet1
             // 
             this.northwindDataSet1.DataSetName = "NorthwindDataSet";
@@ -181,7 +193,7 @@
             // 
             // AddRowButton
             // 
-            this.AddRowButton.Location = new System.Drawing.Point(452, 353);
+            this.AddRowButton.Location = new System.Drawing.Point(12, 374);
             this.AddRowButton.Name = "AddRowButton";
             this.AddRowButton.Size = new System.Drawing.Size(75, 23);
             this.AddRowButton.TabIndex = 2;
@@ -191,7 +203,7 @@
             // 
             // DeleteRowButton
             // 
-            this.DeleteRowButton.Location = new System.Drawing.Point(337, 353);
+            this.DeleteRowButton.Location = new System.Drawing.Point(12, 345);
             this.DeleteRowButton.Name = "DeleteRowButton";
             this.DeleteRowButton.Size = new System.Drawing.Size(75, 23);
             this.DeleteRowButton.TabIndex = 3;
@@ -199,11 +211,118 @@
             this.DeleteRowButton.UseVisualStyleBackColor = true;
             this.DeleteRowButton.Click += new System.EventHandler(this.button1_Click);
             // 
+            // UpdateValueButton
+            // 
+            this.UpdateValueButton.Location = new System.Drawing.Point(111, 316);
+            this.UpdateValueButton.Name = "UpdateValueButton";
+            this.UpdateValueButton.Size = new System.Drawing.Size(107, 23);
+            this.UpdateValueButton.TabIndex = 4;
+            this.UpdateValueButton.Text = "Update Value";
+            this.UpdateValueButton.UseVisualStyleBackColor = true;
+            this.UpdateValueButton.Click += new System.EventHandler(this.UpdateValueButton_Click);
+            // 
+            // AcceptChangesButton
+            // 
+            this.AcceptChangesButton.Location = new System.Drawing.Point(111, 345);
+            this.AcceptChangesButton.Name = "AcceptChangesButton";
+            this.AcceptChangesButton.Size = new System.Drawing.Size(107, 23);
+            this.AcceptChangesButton.TabIndex = 5;
+            this.AcceptChangesButton.Text = "Accept Changes";
+            this.AcceptChangesButton.UseVisualStyleBackColor = true;
+            this.AcceptChangesButton.Click += new System.EventHandler(this.AcceptChangesButton_Click);
+            // 
+            // RejectChangesButton
+            // 
+            this.RejectChangesButton.Location = new System.Drawing.Point(111, 374);
+            this.RejectChangesButton.Name = "RejectChangesButton";
+            this.RejectChangesButton.Size = new System.Drawing.Size(107, 23);
+            this.RejectChangesButton.TabIndex = 6;
+            this.RejectChangesButton.Text = "Reject Changes";
+            this.RejectChangesButton.UseVisualStyleBackColor = true;
+            this.RejectChangesButton.Click += new System.EventHandler(this.RejectChangesButton_Click);
+            // 
+            // CellValueTextBox
+            // 
+            this.CellValueTextBox.Location = new System.Drawing.Point(494, 315);
+            this.CellValueTextBox.Name = "CellValueTextBox";
+            this.CellValueTextBox.Size = new System.Drawing.Size(100, 20);
+            this.CellValueTextBox.TabIndex = 7;
+            // 
+            // OriginalDRVTextBox
+            // 
+            this.OriginalDRVTextBox.Location = new System.Drawing.Point(494, 341);
+            this.OriginalDRVTextBox.Name = "OriginalDRVTextBox";
+            this.OriginalDRVTextBox.Size = new System.Drawing.Size(100, 20);
+            this.OriginalDRVTextBox.TabIndex = 8;
+            // 
+            // CurrentDRVTextBox
+            // 
+            this.CurrentDRVTextBox.Location = new System.Drawing.Point(494, 368);
+            this.CurrentDRVTextBox.Name = "CurrentDRVTextBox";
+            this.CurrentDRVTextBox.Size = new System.Drawing.Size(100, 20);
+            this.CurrentDRVTextBox.TabIndex = 9;
+            // 
+            // RowStateTextBox
+            // 
+            this.RowStateTextBox.Location = new System.Drawing.Point(494, 395);
+            this.RowStateTextBox.Name = "RowStateTextBox";
+            this.RowStateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.RowStateTextBox.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(375, 318);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "CellValueTextBox";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(375, 344);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "OriginalDRVTextBox";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(376, 371);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(103, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "CurrentDRVTextBox";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(376, 398);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "RowStateTextBox";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.RowStateTextBox);
+            this.Controls.Add(this.CurrentDRVTextBox);
+            this.Controls.Add(this.OriginalDRVTextBox);
+            this.Controls.Add(this.CellValueTextBox);
+            this.Controls.Add(this.RejectChangesButton);
+            this.Controls.Add(this.AcceptChangesButton);
+            this.Controls.Add(this.UpdateValueButton);
             this.Controls.Add(this.DeleteRowButton);
             this.Controls.Add(this.AddRowButton);
             this.Controls.Add(this.FillTableButton);
@@ -214,6 +333,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CustomersDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.northwindDataSet1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -230,6 +350,17 @@
         private NorthwindDataSet northwindDataSet1;
         private System.Windows.Forms.Button AddRowButton;
         private System.Windows.Forms.Button DeleteRowButton;
+        private System.Windows.Forms.Button UpdateValueButton;
+        private System.Windows.Forms.Button AcceptChangesButton;
+        private System.Windows.Forms.Button RejectChangesButton;
+        private System.Windows.Forms.TextBox CellValueTextBox;
+        private System.Windows.Forms.TextBox OriginalDRVTextBox;
+        private System.Windows.Forms.TextBox CurrentDRVTextBox;
+        private System.Windows.Forms.TextBox RowStateTextBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 
