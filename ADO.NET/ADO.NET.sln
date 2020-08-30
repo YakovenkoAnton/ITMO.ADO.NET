@@ -37,6 +37,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavingDataSetXml", "SavingD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadDataSetXml", "LoadDataSetXml\LoadDataSetXml.csproj", "{4159A15E-FA0A-4DA1-9C77-FCC37F2CE5D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq_Student", "Linq_Student\Linq_Student.csproj", "{0BC9BD39-A92B-44FA-9C95-97318757ECAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQsql_1", "LINQsql_1\LINQsql_1.csproj", "{F93D9553-962B-4E7F-ADEF-E586DED140CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +115,14 @@ Global
 		{4159A15E-FA0A-4DA1-9C77-FCC37F2CE5D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4159A15E-FA0A-4DA1-9C77-FCC37F2CE5D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4159A15E-FA0A-4DA1-9C77-FCC37F2CE5D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BC9BD39-A92B-44FA-9C95-97318757ECAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BC9BD39-A92B-44FA-9C95-97318757ECAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BC9BD39-A92B-44FA-9C95-97318757ECAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BC9BD39-A92B-44FA-9C95-97318757ECAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F93D9553-962B-4E7F-ADEF-E586DED140CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F93D9553-962B-4E7F-ADEF-E586DED140CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F93D9553-962B-4E7F-ADEF-E586DED140CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F93D9553-962B-4E7F-ADEF-E586DED140CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
