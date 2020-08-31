@@ -173,6 +173,7 @@
             this.buttonOut.TabIndex = 13;
             this.buttonOut.Text = "Показать данные";
             this.buttonOut.UseVisualStyleBackColor = true;
+            this.buttonOut.Click += new System.EventHandler(this.buttonOut_Click);
             // 
             // buttonEdit
             // 
@@ -182,6 +183,7 @@
             this.buttonEdit.TabIndex = 14;
             this.buttonEdit.Text = "Редактировать";
             this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // buttonDel
             // 
@@ -191,6 +193,7 @@
             this.buttonDel.TabIndex = 15;
             this.buttonDel.Text = "Удалить";
             this.buttonDel.UseVisualStyleBackColor = true;
+            this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
             // 
             // groupBox1
             // 
@@ -213,6 +216,7 @@
             this.OrderradioButton.TabStop = true;
             this.OrderradioButton.Text = "Orders";
             this.OrderradioButton.UseVisualStyleBackColor = true;
+            this.OrderradioButton.CheckedChanged += new System.EventHandler(this.OrderradioButton_CheckedChanged);
             // 
             // CustomerradioButton
             // 
@@ -249,6 +253,8 @@
             this.GridView.Name = "GridView";
             this.GridView.Size = new System.Drawing.Size(800, 238);
             this.GridView.TabIndex = 19;
+            this.GridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridView_CellClick);
+            this.GridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridView_CellContentClick);
             // 
             // CustomerViewer
             // 
