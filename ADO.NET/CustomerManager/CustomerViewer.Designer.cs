@@ -46,6 +46,7 @@
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ViporderradioButton = new System.Windows.Forms.RadioButton();
             this.OrderradioButton = new System.Windows.Forms.RadioButton();
             this.CustomerradioButton = new System.Windows.Forms.RadioButton();
             this.textBoxCustomer = new System.Windows.Forms.TextBox();
@@ -71,6 +72,7 @@
             this.orderlistBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.orderlistBox.Size = new System.Drawing.Size(200, 121);
             this.orderlistBox.TabIndex = 1;
+            this.orderlistBox.SelectedIndexChanged += new System.EventHandler(this.orderlistBox_SelectedIndexChanged);
             // 
             // textBoxname
             // 
@@ -197,6 +199,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ViporderradioButton);
             this.groupBox1.Controls.Add(this.OrderradioButton);
             this.groupBox1.Controls.Add(this.CustomerradioButton);
             this.groupBox1.Location = new System.Drawing.Point(476, 91);
@@ -206,10 +209,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Выбор данных";
             // 
+            // ViporderradioButton
+            // 
+            this.ViporderradioButton.AutoSize = true;
+            this.ViporderradioButton.Location = new System.Drawing.Point(188, 20);
+            this.ViporderradioButton.Name = "ViporderradioButton";
+            this.ViporderradioButton.Size = new System.Drawing.Size(69, 17);
+            this.ViporderradioButton.TabIndex = 2;
+            this.ViporderradioButton.TabStop = true;
+            this.ViporderradioButton.Text = "Vip Order";
+            this.ViporderradioButton.UseVisualStyleBackColor = true;
+            // 
             // OrderradioButton
             // 
             this.OrderradioButton.AutoSize = true;
-            this.OrderradioButton.Location = new System.Drawing.Point(200, 22);
+            this.OrderradioButton.Location = new System.Drawing.Point(115, 22);
             this.OrderradioButton.Name = "OrderradioButton";
             this.OrderradioButton.Size = new System.Drawing.Size(56, 17);
             this.OrderradioButton.TabIndex = 1;
@@ -251,6 +265,7 @@
             this.GridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.GridView.Location = new System.Drawing.Point(0, 212);
             this.GridView.Name = "GridView";
+            this.GridView.RowHeadersWidth = 60;
             this.GridView.Size = new System.Drawing.Size(800, 238);
             this.GridView.TabIndex = 19;
             this.GridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridView_CellClick);
@@ -317,6 +332,7 @@
         private System.Windows.Forms.TextBox textBoxCustomer;
         private System.Windows.Forms.Label labelid;
         private System.Windows.Forms.DataGridView GridView;
+        private System.Windows.Forms.RadioButton ViporderradioButton;
     }
 }
 

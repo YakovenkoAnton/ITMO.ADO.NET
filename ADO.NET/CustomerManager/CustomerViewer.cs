@@ -22,29 +22,32 @@ namespace CustomerManager
                 GridView.DataSource = context.Customers.ToList();
             else
             if (this.OrderradioButton.Checked == true)
-                GridView.DataSource = context.Orders.ToList(); 
+                GridView.DataSource = context.Orders.ToList();
+            else if (this.ViporderradioButton.Checked == true)
+                GridView.DataSource = context.VipOrders.ToList();
         }
-
 
 
         SampleContext context = new SampleContext();
         byte[] Ph;
 
+
         public CustomerViewer()
         {
             InitializeComponent();
-            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SampleContext>());
 
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SampleContext>());
         }
 
         private void CustomerViewer_Load(object sender, EventArgs e)
         {
-                context.Orders.Add(new Order { ProductName = "Аудио", Quantity = 12, 
-                    PurchaseDate = DateTime.Parse("12.01.2016") });
-                context.Orders.Add(new Order { ProductName = "Видео", Quantity = 22, 
-                    PurchaseDate = DateTime.Parse("10.01.2016") }); 
+                context.Orders.Add(new Order { ProductName = "Аудио", Quantity = 12, PurchaseDate = DateTime.Parse("12.01.2016") });
+                context.Orders.Add(new Order { ProductName = "Видео", Quantity = 22, PurchaseDate = DateTime.Parse("10.01.2016") });
+                context.VipOrders.Add(new VipOrder { ProductName = "Авто", Quantity = 101, PurchaseDate = DateTime.Parse("10.01.2016"),
+                    status = "Высокий" });
                 context.SaveChanges(); 
                 orderlistBox.DataSource = context.Orders.ToList();
+
             
         }
 
@@ -143,7 +146,13 @@ namespace CustomerManager
             var id = Convert.ToInt32(labelid.Text); 
             var customer = context.Customers.Find(id);
             context.Entry(customer).State = EntityState.Deleted; 
-            context.SaveChanges(); Output();
+            context.SaveChanges(); 
+            Output();
+        }
+
+        private void orderlistBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
     
