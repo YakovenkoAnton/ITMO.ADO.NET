@@ -63,6 +63,7 @@
             this.courseGridView.Name = "courseGridView";
             this.courseGridView.Size = new System.Drawing.Size(310, 233);
             this.courseGridView.TabIndex = 2;
+            this.courseGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.courseGridView_CellContentClick);
             // 
             // saveChanges
             // 

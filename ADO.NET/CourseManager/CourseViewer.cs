@@ -86,5 +86,10 @@ namespace CourseManager
             OfficeAssignment officeForm = new OfficeAssignment();
             officeForm.Visible = true;
         }
+
+        private void courseGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
