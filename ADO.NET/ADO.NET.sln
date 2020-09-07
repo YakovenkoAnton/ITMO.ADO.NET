@@ -45,6 +45,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQsqlSproc", "LINQsqlSpro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQsql_m", "LINQsql_m\LINQsql_m.csproj", "{8712C16B-BAE8-4AA5-BDF5-3B137633A873}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudGrades", "StudGrades\StudGrades.csproj", "{54A08D17-A483-41EF-BA60-3ACFEF32CCD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "std", "std\std.csproj", "{88EEB4FB-0B0C-4B2C-8414-370221D45432}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +139,14 @@ Global
 		{8712C16B-BAE8-4AA5-BDF5-3B137633A873}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8712C16B-BAE8-4AA5-BDF5-3B137633A873}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8712C16B-BAE8-4AA5-BDF5-3B137633A873}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54A08D17-A483-41EF-BA60-3ACFEF32CCD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54A08D17-A483-41EF-BA60-3ACFEF32CCD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54A08D17-A483-41EF-BA60-3ACFEF32CCD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54A08D17-A483-41EF-BA60-3ACFEF32CCD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88EEB4FB-0B0C-4B2C-8414-370221D45432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88EEB4FB-0B0C-4B2C-8414-370221D45432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88EEB4FB-0B0C-4B2C-8414-370221D45432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88EEB4FB-0B0C-4B2C-8414-370221D45432}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
